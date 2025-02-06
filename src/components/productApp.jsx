@@ -114,7 +114,7 @@ const ProductApp = () => {
           </select>
         </div>
         
-        <PrimaryButton size="18" color="purple" text="Jatka tilaukseen!" onClick={() => setView('contact')} />
+        <PrimaryButton size="18" color="purple" text="Vahvista!" onClick={() => setView('contact')} />
       </div>
 
       <div className="flex-2 flex justify-center items-center">

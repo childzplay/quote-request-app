@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+// Components
+import { PrimaryButton, ReturnButton, SubmitButton } from './buttons';  // Import all buttons
+
+
 const ProductApp = () => {
   const [view, setView] = useState('configurator');
   const [config, setConfig] = useState({
@@ -18,8 +22,14 @@ const ProductApp = () => {
   };
 
   const handleFormChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    e.preventDefault(); // Prevent any default behavior
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,12 +114,7 @@ const ProductApp = () => {
           </select>
         </div>
         
-        <button 
-          onClick={() => setView('contact')}
-          className="bg-gradient-to-tl from-purple-600 to-teal-500 text-white text-lg font-bold px-6 py-3 mt-5 rounded hover:bg-green-700"
-        >
-          Vahvista!
-        </button>
+        <PrimaryButton size="18" color="purple" text="Jatka tilaukseen!" onClick={() => setView('contact')} />
       </div>
 
       <div className="flex-2 flex justify-center items-center">
@@ -139,15 +144,9 @@ const ProductApp = () => {
   );
 
   const ContactView = () => (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-4">Täytä yhteystietosi</h2>
-      <button 
-        onClick={() => setView('configurator')}
-        className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 mb-4"
-      >
-        Takaisin
-      </button>
-      
+    <div className="max-w-md mx-auto w-full min-w-full">
+      <ReturnButton size="18" color="purple" text="Palaa takaisin" onClick={() => setView('configurator')} />
+      <h2 className="text-xl font-bold mb-6">Täytä yhteystiedot</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-2">Nimi:</label>
@@ -184,12 +183,7 @@ const ProductApp = () => {
           />
         </div>
         
-        <button 
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          Lähetä tarjouspyyntö
-        </button>
+        <SubmitButton size="18" color="purple" text="Lähetä tarjouspyyntö" onClick={handleSubmit} />
       </form>
     </div>
   );

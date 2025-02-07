@@ -1,11 +1,12 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-export const PrimaryButton = ({ onClick, text = "Vahvista!" }) => {
+
+export const PrimaryButton = ({ onClick, text, styles = "Vahvista!" }) => {
   return (
     <button 
       onClick={onClick}
-      className="bg-gradient-to-tl from-purple-600 to-teal-500 text-white text-lg font-bold px-6 py-3 rounded hover:bg-green-700"
+      className={`bg-gradient-to-tl from-purple-600 to-teal-500 text-white text-xl font-bold px-8 py-4 rounded transition-all duration-300 hover:text-2xl ${styles}`}
     >
       {text}
     </button>
@@ -24,12 +25,12 @@ export const ReturnButton = ({ size = 16, color = "purple", text = "Takaisin", o
   );
 };
 
-export const SubmitButton = ({ text, onClick }) => {
+export const SubmitButton = ({ text, styles, onClick }) => {
   return (
     <button 
       type="submit"
       onClick={onClick} 
-      className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-bold transition-colors"
+      className={`bg-gradient-to-tl from-purple-600 to-teal-500 text-white text-2xl px-8 py-5 rounded font-bold transition-all duration-300 hover:text-3xl ${styles}`}
     >
       {text}
     </button>
